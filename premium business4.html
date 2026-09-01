@@ -1,0 +1,1225 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SaifCorp - Premium Business Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #0a0f2c;
+    --secondary: #1a237e;
+    --accent: #2979ff;
+    --gold: #ffd740;
+    --bg: #f8f9ff;
+    --dark: #050818;
+    --card: #ffffff;
+    --border: #e3e8f0;
+    --muted: #64748b;
+    --text: #0a0f2c;
+    --light: #eef2ff;
+    --green: #00c853;
+    --cyan: #00e5ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes glow { 0%,100% { box-shadow: 0 0 20px rgba(41,121,255,0.3); } 50% { box-shadow: 0 0 40px rgba(41,121,255,0.6); } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 18px 70px;
+}
+.nav-inner {
+    background: rgba(5,8,24,0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(41,121,255,0.15);
+    border-radius: 16px;
+    padding: 0 30px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--accent), var(--cyan)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo-text { font-size: 20px; font-weight: 900; color: white; letter-spacing: -0.5px; }
+.logo-text span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: white; }
+.nav-btns { display: flex; gap: 10px; }
+.btn-nav-ghost { padding: 9px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: white; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.btn-nav-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-nav-fill { padding: 9px 20px; background: var(--accent); color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.btn-nav-fill:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(41,121,255,0.4); }
+/* Hero Section Layout */
+.hero-section {
+    position: relative;
+    padding: 140px 0 100px 0;
+    background: #060919;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Glowing Backgrounds */
+.glow-bg {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+.glow-1 { top: -100px; left: -50px; background: #2979ff; }
+.glow-2 { bottom: 0px; right: 0px; background: #7c4dff; }
+
+/* Badge Pill */
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background: rgba(41, 121, 255, 0.1);
+    border: 1px solid rgba(41, 121, 255, 0.3);
+    font-size: 0.85rem;
+    color: #2979ff;
+    margin-bottom: 24px;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #2979ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #2979ff;
+}
+
+/* Typography */
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #2979ff 0%, #00e5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 540px;
+}
+
+/* CTA Buttons */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2979ff, #1565c0);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(41, 121, 255, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(41, 121, 255, 0.5);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Social Proof */
+.hero-trust-proof {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatar-group {
+    display: flex;
+}
+
+.avatar-group img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #060919;
+    margin-left: -12px;
+}
+
+.avatar-group img:first-child { margin-left: 0; }
+
+.stars { color: #ffd740; font-size: 0.9rem; }
+.rating-text p { font-size: 0.85rem; color: #94a3b8; margin: 0; }
+
+/* Right Visual & Glassmorphism Card */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-card {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.main-dashboard {
+    width: 100%;
+    max-width: 380px;
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.dash-badge {
+    background: rgba(0, 229, 255, 0.15);
+    color: #00e5ff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.dash-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    height: 120px;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-bar {
+    flex: 1;
+    height: var(--height);
+    background: rgba(41, 121, 255, 0.25);
+    border-radius: 6px;
+    transition: height 0.5s ease;
+}
+
+.chart-bar.active {
+    background: linear-gradient(to top, #2979ff, #00e5ff);
+}
+
+.dash-stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dash-stats small { color: #64748b; font-size: 0.75rem; display: block; }
+.dash-stats strong { font-size: 1.1rem; color: #fff; }
+
+.floating-card {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-icon {
+    font-size: 1.5rem;
+    background: rgba(41, 121, 255, 0.2);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.floating-card strong { display: block; font-size: 0.9rem; }
+.floating-card small { color: #94a3b8; font-size: 0.75rem; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-container { grid-template-columns: 1fr; text-align: center; }
+    .hero-description { margin: 0 auto 35px auto; }
+    .hero-cta-group { justify-content: center; }
+    .hero-trust-proof { justify-content: center; }
+    .floating-card { display: none; }
+}
+ /* MARQUEE */
+.marquee { background: linear-gradient(90deg, var(--accent), #1565c0); padding: 11px 0; overflow: hidden; }
+.marquee-inner { display: inline-flex; gap: 60px; animation: marquee 20s linear infinite; white-space: nowrap; }
+.marquee-item { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 15px; }
+.marquee-item::after { content: '◆'; opacity: 0.5; }
+
+/* SECTION */
+.section-header { text-align: center; margin-bottom: 60px; }
+.s-tag { font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; }
+.section-header h2 { font-size: 44px; font-weight: 800; letter-spacing: -1.5px; color: var(--dark); margin-bottom: 14px; }
+.section-header h2 span { background: linear-gradient(135deg, var(--accent), #1565c0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-header p { font-size: 16px; color: var(--muted); max-width: 550px; margin: 0 auto; line-height: 1.8; }
+
+ .services-section {
+    padding: 100px 0;
+    text-align: center;
+    background: #060919; /* অথবা লাইট থিম হলে ব্যাকগ্রাউন্ড ক্লিয়ার রাখতে পারো */
+}
+
+.services-subtitle {
+    color: #2979ff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.services-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff; /* লাইট ব্যাকগ্রাউন্ড হলে #0a0f2c দিবে */
+}
+
+.services-title span {
+    color: #2979ff;
+}
+
+.services-desc {
+    color: #94a3b8;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+     gap: 28px;
+}
+.service-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 35px 28px;
+    border-radius: 20px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+
+    /* স্ক্রোল এনিমেশনের জন্য প্রপার্টি */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* স্ক্রোল করে সেকশনে নামলে কার্ডগুলো ভেসে উঠবে */
+.service-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 35px 28px;
+    border-radius: 20px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+ 
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(41, 121, 255, 0.4);
+    box-shadow: 0 15px 35px rgba(41, 121, 255, 0.15);
+}
+
+/* Service Icons Styling */
+.service-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.icon-blue { background: rgba(41, 121, 255, 0.15); color: #2979ff; }
+.icon-purple { background: rgba(124, 77, 255, 0.15); color: #7c4dff; }
+.icon-orange { background: rgba(255, 111, 0, 0.15); color: #ff6f00; }
+.icon-green { background: rgba(0, 200, 83, 0.15); color: #00c853; }
+.icon-cyan { background: rgba(0, 229, 255, 0.15); color: #00e5ff; }
+.icon-pink { background: rgba(255, 64, 129, 0.15); color: #ff4081; }
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    font-size: 0.92rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #2979ff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.service-card:hover .service-link {
+    gap: 12px;
+}
+/* ABOUT */
+.about { padding: 90px 70px; background: var(--bg); }
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: center; }
+.about-left { position: relative; }
+.about-main { height: 450px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 120px; box-shadow: 0 30px 70px rgba(10,15,44,0.2); animation: float 5s ease-in-out infinite; }
+.about-badge { position: absolute; bottom: -20px; right: -20px; background: white; border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 35px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+.ab-icon { font-size: 28px; }
+.ab-val { font-size: 22px; font-weight: 900; color: var(--dark); }
+.ab-label { font-size: 11px; color: var(--muted); }
+.about-right .s-tag { text-align: left; }
+.about-right h2 { font-size: 40px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 18px; color: var(--dark); line-height: 1.2; text-align: left; }
+.about-right h2 span { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.about-right > p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+.about-points { display: flex; flex-direction: column; gap: 15px; margin-bottom: 32px; }
+.about-point { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text); font-weight: 500; }
+.ap-check { width: 24px; height: 24px; background: linear-gradient(135deg, var(--accent), var(--cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; flex-shrink: 0; }
+.about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 30px; }
+.about-stat { background: white; padding: 18px; border-radius: 14px; border: 1px solid var(--border); text-align: center; }
+.about-stat h3 { font-size: 26px; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 3px; }
+.about-stat p { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* STATS */
+.stats { padding: 80px 70px; background: linear-gradient(135deg, var(--dark), var(--primary)); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); }
+.stat-card { padding: 40px 25px; text-align: center; transition: 0.3s; animation: countUp 0.8s ease forwards; }
+.stat-card:hover { background: rgba(41,121,255,0.06); }
+.stat-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+.stat-val { font-size: 52px; font-weight: 900; letter-spacing: -2px; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+/* PROCESS */
+.process { padding: 90px 70px; background: white; text-align: center; }
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1100px; margin: 60px auto 0; position: relative; }
+.process-grid::before { content: ''; position: absolute; top: 35px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, var(--accent), var(--cyan)); opacity: 0.2; }
+.process-card { padding: 30px 20px; position: relative; z-index: 1; }
+.process-num { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent), #1565c0); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: white; margin: 0 auto 18px; box-shadow: 0 8px 25px rgba(41,121,255,0.3); animation: glow 3s infinite; }
+.process-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.process-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+.team-section {
+    padding: 90px 0;
+    text-align: center;
+}
+
+.team-subtitle {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.team-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.team-title span {
+    color: var(--accent);
+}
+
+.team-desc {
+    color: var(--muted);
+    margin-top: 8px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* টিম কার্ডের প্রাথমিক অবস্থা (লুকানো থাকবে) */
+.team-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border);
+    text-align: left;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* স্ক্রোল করে সেকশনে এলে এই ক্লাস যুক্ত হয়ে কার্ড ভেসে উঠবে */
+.team-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* কার্ড হোভার ইফেক্ট */
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ছবির জন্য সঠিক সাইজ ও ফোকাস প্লেসমেন্ট */
+.team-img-box {
+    width: 100%;
+    height: 280px; /* হাইট বাড়ানো হয়েছে যেন মাথা না কাটে */
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.team-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* মুখ ফোকাসে রাখার জন্য অ্যাডজাস্ট করা হয়েছে */
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-img-box img {
+    transform: scale(1.05);
+}
+
+.team-role-badge {
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 10px 16px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.team-info {
+    padding: 22px;
+}
+
+.team-info h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.role-desc {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.bio {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+/* TESTIMONIALS */
+.testimonials { padding: 90px 70px; background: white; text-align: center; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1200px; margin: 60px auto 0; }
+.testimonial-card { background: var(--bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border); text-align: left; transition: 0.3s; position: relative; }
+.testimonial-card:hover { border-color: rgba(41,121,255,0.2); box-shadow: 0 10px 35px rgba(41,121,255,0.08); transform: translateY(-3px); }
+.testimonial-card::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 80px; color: var(--accent); opacity: 0.1; position: absolute; top: 5px; left: 18px; line-height: 1; }
+.t-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+.testimonial-card p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+.t-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+.t-avatar { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent), var(--cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 16px; }
+.t-info h4 { font-size: 14px; font-weight: 700; color: var(--dark); }
+.t-info p { font-size: 12px; color: var(--muted); }
+.t-company { font-size: 11px; color: var(--accent); font-weight: 700; margin-top: 2px; }
+
+/* PRICING */
+.pricing { padding: 90px 70px; background: var(--bg); text-align: center; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1100px; margin: 60px auto 0; }
+.pricing-card { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 38px 30px; transition: 0.3s; position: relative; }
+.pricing-card.popular { border-color: var(--accent); background: linear-gradient(135deg, #0a0f2c, #1a237e); color: white; transform: scale(1.04); box-shadow: 0 20px 60px rgba(41,121,255,0.2); }
+.popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--cyan)); color: white; padding: 5px 20px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+.pricing-plan { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 15px; }
+.pricing-card.popular .pricing-plan { color: #82b1ff; }
+.pricing-price { font-size: 52px; font-weight: 900; letter-spacing: -2px; color: var(--dark); margin-bottom: 6px; }
+.pricing-card.popular .pricing-price { color: white; }
+.pricing-price span { font-size: 18px; font-weight: 600; letter-spacing: 0; }
+.pricing-desc { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+.pricing-card.popular .pricing-desc { color: rgba(255,255,255,0.6); }
+.pricing-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; text-align: left; }
+.pricing-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+.pricing-card.popular .pricing-feature { color: rgba(255,255,255,0.85); }
+.pf-check { width: 20px; height: 20px; background: rgba(41,121,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--accent); flex-shrink: 0; }
+.pricing-card.popular .pf-check { background: rgba(255,255,255,0.1); color: #82b1ff; }
+.pricing-btn { width: 100%; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; border: none; }
+.pricing-btn-outline { background: var(--light); color: var(--accent); }
+.pricing-btn-outline:hover { background: var(--accent); color: white; }
+.pricing-btn-fill { background: linear-gradient(135deg, var(--accent), var(--cyan)); color: white; box-shadow: 0 8px 25px rgba(41,121,255,0.3); }
+.pricing-btn-fill:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* CONTACT */
+.contact { padding: 90px 70px; background: white; }
+.contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; max-width: 1200px; margin: 0 auto; }
+.contact-left .s-tag { text-align: left; }
+.contact-left h2 { font-size: 40px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 16px; color: var(--dark); line-height: 1.2; text-align: left; }
+.contact-left h2 span { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.contact-left > p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 35px; }
+.contact-items { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; align-items: center; gap: 16px; }
+.ci-icon { width: 48px; height: 48px; background: var(--light); border: 1px solid rgba(41,121,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; transition: 0.3s; }
+.contact-item:hover .ci-icon { background: var(--accent); border-color: var(--accent); }
+.ci-text h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.ci-text p { font-size: 14px; color: var(--muted); }
+.contact-form { background: var(--bg); padding: 42px; border-radius: 24px; border: 1px solid var(--border); }
+.contact-form h3 { font-size: 22px; font-weight: 800; margin-bottom: 25px; color: var(--dark); }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 16px; background: white; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; color: var(--text); outline: none; transition: 0.3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(41,121,255,0.08); }
+.form-group textarea { height: 100px; resize: none; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--accent), #1565c0); color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 6px; }
+.submit-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(41,121,255,0.3); }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 65px 70px 25px; color: white; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 45px; margin-bottom: 45px; }
+.footer-brand p { font-size: 14px; color: #374151; line-height: 1.8; margin-top: 14px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #6b7280; margin-bottom: 16px; }
+.footer-col a { display: block; color: #374151; text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: 0.3s; }
+.footer-col a:hover { color: white; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer-bottom p { font-size: 13px; color: #374151; }
+.footer-bottom span { color: var(--accent); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    nav { padding: 10px 15px; }
+    .nav-inner { padding: 0 20px; border-radius: 12px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 60px; }
+    .hero h1 { font-size: 38px; }
+    .hero-right { display: none; }
+    .services, .about, .process, .team, .testimonials, .pricing, .contact { padding: 55px 20px; }
+    .stats { padding: 55px 20px; }
+    .section-header h2 { font-size: 30px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-layout { grid-template-columns: 1fr; gap: 40px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid::before { display: none; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.popular { transform: scale(1); }
+    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+    .contact-form { padding: 25px; }
+    .footer-top { grid-template-columns: 1fr; gap: 25px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="logo">
+            <div class="logo-icon">💼</div>
+            <div class="logo-text">Saif<span>Corp</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-nav-ghost">Login</button>
+            <button class="btn-nav-fill" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+        </div>
+    </div>
+</nav>
+<section class="hero-section">
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <div class="container hero-container">
+        <div class="hero-content">
+            <div class="badge-pill">
+                <span class="badge-dot"></span>
+                <span>Trusted by 500+ Companies Worldwide</span>
+            </div>
+
+            <h1 class="hero-title">
+                Grow Your Business with <span class="gradient-text">Premium Solutions</span>
+            </h1>
+
+            <p class="hero-description">
+                SaifCorp delivers cutting-edge business solutions that drive growth, boost efficiency, and maximize your ROI with world-class expertise.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-primary">
+                    Get Started Free 
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#services" class="btn-secondary">Explore Services</a>
+            </div>
+
+            <div class="hero-trust-proof">
+                <div class="avatar-group">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Client">
+                </div>
+                <div class="rating-text">
+                    <div class="stars">★★★★★</div>
+                    <p>4.9/5 from 1,200+ reviews</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="glass-card main-dashboard">
+                <div class="dash-header">
+                    <div class="dash-title">Revenue Growth</div>
+                    <span class="dash-badge">+34.8%</span>
+                </div>
+                <div class="dash-chart">
+                    <div class="chart-bar" style="--height: 40%"></div>
+                    <div class="chart-bar" style="--height: 65%"></div>
+                    <div class="chart-bar" style="--height: 50%"></div>
+                    <div class="chart-bar" style="--height: 85%"></div>
+                    <div class="chart-bar active" style="--height: 100%"></div>
+                </div>
+                <div class="dash-stats">
+                    <div>
+                        <small>Total Revenue</small>
+                        <strong>$128,450</strong>
+                    </div>
+                    <div>
+                        <small>Active Clients</small>
+                        <strong>2,840</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card floating-card">
+                <div class="floating-icon">🚀</div>
+                <div>
+                    <strong>Fast Deployment</strong>
+                    <small>Real-time Integration</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- MARQUEE -->
+<div class="marquee">
+    <div class="marquee-inner">
+        <span class="marquee-item">Strategy & Consulting</span>
+        <span class="marquee-item">Digital Transformation</span>
+        <span class="marquee-item">Brand Development</span>
+        <span class="marquee-item">Data Analytics</span>
+        <span class="marquee-item">IT Solutions</span>
+        <span class="marquee-item">Marketing & Growth</span>
+        <span class="marquee-item">Strategy & Consulting</span>
+        <span class="marquee-item">Digital Transformation</span>
+        <span class="marquee-item">Brand Development</span>
+        <span class="marquee-item">Data Analytics</span>
+    </div>
+</div>
+
+<!-- Our Premium Services Section -->
+<section class="services-section" id="services">
+    <div class="container">
+        <p class="services-subtitle">WHAT WE OFFER</p>
+        <h2 class="services-title">Our Premium <span>Services</span></h2>
+        <p class="services-desc">End-to-end business solutions designed to transform your company and accelerate sustainable growth</p>
+
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-blue">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                </div>
+                <h3>Business Strategy</h3>
+                <p>Data-driven strategic planning and consulting to help you make better decisions and outperform your competition.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-purple">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                </div>
+                <h3>Digital Transformation</h3>
+                <p>Complete digital overhaul of your business operations — from legacy systems to modern cloud-based solutions.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-orange">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h3>Marketing & Growth</h3>
+                <p>Performance-driven marketing strategies, SEO, and paid advertising campaigns that convert leads into loyal customers.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-green">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Cyber Security</h3>
+                <p>Enterprise-grade security audits, threat detection, and data protection to keep your business safe from cyber threats.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-cyan">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Cloud Infrastructure</h3>
+                <p>Scalable cloud server deployment, DevOps automation, and 24/7 architecture management for seamless uptime.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-icon-box icon-pink">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3>UI/UX & Web Design</h3>
+                <p>Crafting stunning, conversion-focused user interfaces and high-performance websites tailored to your brand.</p>
+                <a href="#contact" class="service-link">Learn More <span>→</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-layout">
+        <div class="about-left">
+            <div class="about-main">💼</div>
+            <div class="about-badge">
+                <div class="ab-icon">🏆</div>
+                <div>
+                    <div class="ab-val">#1 Agency</div>
+                    <div class="ab-label">Saudi Arabia 2026</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-right">
+            <p class="s-tag">About SaifCorp</p>
+            <h2>12 Years of <span>Business Excellence</span></h2>
+            <p>Founded in 2012, SaifCorp has grown from a small consultancy to Saudi Arabia's most trusted business solutions provider. We have helped 500+ companies across the GCC achieve extraordinary growth.</p>
+            <div class="about-points">
+                <div class="about-point"><div class="ap-check">✓</div>Award-winning team of 50+ industry experts</div>
+                <div class="about-point"><div class="ap-check">✓</div>Offices in Riyadh, Dubai and London</div>
+                <div class="about-point"><div class="ap-check">✓</div>98% client satisfaction and retention rate</div>
+                <div class="about-point"><div class="ap-check">✓</div>ISO certified and Vision 2030 aligned</div>
+            </div>
+            <div class="about-grid">
+                <div class="about-stat"><h3>500+</h3><p>Clients Served</p></div>
+                <div class="about-stat"><h3>12+</h3><p>Years Active</p></div>
+                <div class="about-stat"><h3>50+</h3><p>Team Members</p></div>
+            </div>
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Work With Us →</button>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat-card"><span class="stat-icon">🏢</span><div class="stat-val">500+</div><div class="stat-label">Companies Served</div></div>
+        <div class="stat-card"><span class="stat-icon">🌍</span><div class="stat-val">25+</div><div class="stat-label">Countries Reached</div></div>
+        <div class="stat-card"><span class="stat-icon">💰</span><div class="stat-val">$50M+</div><div class="stat-label">Revenue Generated</div></div>
+        <div class="stat-card"><span class="stat-icon">⭐</span><div class="stat-val">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+    <div class="section-header">
+        <p class="s-tag">How We Work</p>
+        <h2>Our Proven <span>Process</span></h2>
+        <p>A simple, transparent and results-driven approach to every project we undertake</p>
+    </div>
+    <div class="process-grid">
+        <div class="process-card">
+            <div class="process-num">01</div>
+            <h3>Discovery & Analysis</h3>
+            <p>We deeply analyze your business, goals, challenges and competition to create the perfect strategy.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-num">02</div>
+            <h3>Strategy & Planning</h3>
+            <p>Our experts craft a detailed, data-driven roadmap tailored specifically to your business objectives.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-num">03</div>
+            <h3>Execution & Launch</h3>
+            <p>We implement the strategy with precision, keeping you informed at every step of the journey.</p>
+        </div>
+        <div class="process-card">
+            <div class="process-num">04</div>
+            <h3>Growth & Optimization</h3>
+            <p>We continuously monitor, optimize and scale your results to maximize long-term business growth.</p>
+        </div>
+    </div>
+</section>
+
+ <!-- Meet Our Leadership Team Section -->
+<section class="team-section">
+    <div class="container">
+        <p class="team-subtitle">OUR EXPERTS</p>
+        <h2 class="team-title">Meet Our <span>Leadership Team</span></h2>
+        <p class="team-desc">World-class professionals dedicated to delivering extraordinary results for your business</p>
+
+        <div class="team-grid">
+            <!-- 1. CEO & Founder -->
+            <div class="team-card reveal-on-scroll">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80" alt="Saif Al-Rashid">
+                </div>
+                <div class="team-role-badge">CEO & FOUNDER</div>
+                <div class="team-info">
+                    <h3>Saif Al-Rashid</h3>
+                    <p class="role-desc">Strategy & Leadership</p>
+                    <p class="bio">12+ years leading business transformations across GCC and global markets.</p>
+                </div>
+            </div>
+
+            <!-- 2. CTO -->
+            <div class="team-card reveal-on-scroll">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" alt="Sara Hassan">
+                </div>
+                <div class="team-role-badge">CTO</div>
+                <div class="team-info">
+                    <h3>Sara Hassan</h3>
+                    <p class="role-desc">Technology & Innovation</p>
+                    <p class="bio">Former Google engineer. Expert in cloud architecture and digital transformation.</p>
+                </div>
+            </div>
+
+            <!-- 3. CMO -->
+            <div class="team-card reveal-on-scroll">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80" alt="Omar Khan">
+                </div>
+                <div class="team-role-badge">CMO</div>
+                <div class="team-info">
+                    <h3>Omar Khan</h3>
+                    <p class="role-desc">Marketing & Growth</p>
+                    <p class="bio">15+ years in performance marketing. Managed $100M+ in ad campaigns globally.</p>
+                </div>
+            </div>
+
+            <!-- 4. Creative Director -->
+            <div class="team-card reveal-on-scroll">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80" alt="Nora Ahmed">
+                </div>
+                <div class="team-role-badge">CREATIVE DIRECTOR</div>
+                <div class="team-info">
+                    <h3>Nora Ahmed</h3>
+                    <p class="role-desc">Design & Branding</p>
+                    <p class="bio">Award-winning designer. Created brand identities for Fortune 500 companies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <div class="section-header">
+        <p class="s-tag">Client Success</p>
+        <h2>What Our Clients <span>Say</span></h2>
+        <p>Real results from real businesses who trusted SaifCorp to transform their growth</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="t-stars">⭐⭐⭐⭐⭐</div>
+            <p>"SaifCorp completely transformed our digital presence. Revenue increased by 340% within 8 months. Their team's expertise and dedication is truly unmatched in the industry."</p>
+            <div class="t-author">
+                <div class="t-avatar">A</div>
+                <div class="t-info"><h4>Ahmed Al-Mansouri</h4><p>CEO, Al-Mansouri Group</p><div class="t-company">Revenue +340% in 8 months</div></div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="t-stars">⭐⭐⭐⭐⭐</div>
+            <p>"The strategic consulting from SaifCorp helped us expand into 3 new markets successfully. Their data-driven approach and deep market knowledge is absolutely exceptional."</p>
+            <div class="t-author">
+                <div class="t-avatar">K</div>
+                <div class="t-info"><h4>Khalid Al-Fahad</h4><p>MD, Saudi Tech Corp</p><div class="t-company">Expanded to 3 new markets</div></div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="t-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Best business investment we ever made. SaifCorp's marketing strategy increased our leads by 500% and our conversion rate by 180%. Outstanding results every single month."</p>
+            <div class="t-author">
+                <div class="t-avatar">S</div>
+                <div class="t-info"><h4>Sultan Al-Zahrani</h4><p>Founder, ZahTech Solutions</p><div class="t-company">Leads +500% | Conversion +180%</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+    <div class="section-header">
+        <p class="s-tag">Our Packages</p>
+        <h2>Simple & Transparent <span>Pricing</span></h2>
+        <p>Choose the perfect plan for your business. No hidden fees, no surprises.</p>
+    </div>
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <div class="pricing-plan">Starter</div>
+            <div class="pricing-price"><span>SAR </span>2,500<span>/mo</span></div>
+            <div class="pricing-desc">Perfect for small businesses and startups</div>
+            <div class="pricing-features">
+                <div class="pricing-feature"><div class="pf-check">✓</div>Business Strategy Session</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Basic Digital Marketing</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Monthly Analytics Report</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Email & Chat Support</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>1 Revision Per Month</div>
+            </div>
+            <button class="pricing-btn pricing-btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        </div>
+        <div class="pricing-card popular">
+            <div class="popular-badge">⭐ Most Popular</div>
+            <div class="pricing-plan">Professional</div>
+            <div class="pricing-price"><span>SAR </span>6,500<span>/mo</span></div>
+            <div class="pricing-desc">For growing businesses ready to scale</div>
+            <div class="pricing-features">
+                <div class="pricing-feature"><div class="pf-check">✓</div>Full Business Consulting</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Complete Digital Marketing</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Brand Development</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Weekly Analytics Dashboard</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>24/7 Priority Support</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Unlimited Revisions</div>
+            </div>
+            <button class="pricing-btn pricing-btn-fill" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+        </div>
+        <div class="pricing-card">
+            <div class="pricing-plan">Enterprise</div>
+            <div class="pricing-price"><span>SAR </span>15,000<span>/mo</span></div>
+            <div class="pricing-desc">For large enterprises requiring full service</div>
+            <div class="pricing-features">
+                <div class="pricing-feature"><div class="pf-check">✓</div>Dedicated Account Manager</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Full Digital Transformation</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Custom IT Solutions</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>Real-time Analytics</div>
+                <div class="pricing-feature"><div class="pf-check">✓</div>On-site Consultancy</div>
+            </div>
+            <button class="pricing-btn pricing-btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="contact-layout">
+        <div class="contact-left">
+            <p class="s-tag">Get In Touch</p>
+            <h2>Let's Grow Your <span>Business Together</span></h2>
+            <p>Ready to transform your business? Contact us today for a free consultation. Our team will get back to you within 24 hours.</p>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <div class="ci-icon">📍</div>
+                    <div class="ci-text"><h4>Headquarters</h4><p>King Fahd Road, Riyadh, Saudi Arabia</p></div>
+                </div>
+                <div class="contact-item">
+                    <div class="ci-icon">📞</div>
+                    <div class="ci-text"><h4>Phone</h4><p>+966 000 000 000</p></div>
+                </div>
+                <div class="contact-item">
+                    <div class="ci-icon">📧</div>
+                    <div class="ci-text"><h4>Email</h4><p>hello@saifcorp.com</p></div>
+                </div>
+                <div class="contact-item">
+                    <div class="ci-icon">⏰</div>
+                    <div class="ci-text"><h4>Office Hours</h4><p>Sunday - Thursday: 8AM - 6PM</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <h3>Send Us a Message 💬</h3>
+            <div class="form-row">
+                <div class="form-group"><label>First Name</label><input type="text" placeholder="Ahmed"></div>
+                <div class="form-group"><label>Last Name</label><input type="text" placeholder="Al-Rashid"></div>
+            </div>
+            <div class="form-group"><label>Business Email</label><input type="email" placeholder="ahmed@company.com"></div>
+            <div class="form-group"><label>Company Name</label><input type="text" placeholder="Your Company Ltd."></div>
+            <div class="form-group">
+                <label>Service Needed</label>
+                <select>
+                    <option>Business Strategy</option>
+                    <option>Digital Transformation</option>
+                    <option>Marketing & Growth</option>
+                    <option>Brand Development</option>
+                    <option>Data Analytics</option>
+                    <option>IT & Cybersecurity</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your business goals and challenges..."></textarea></div>
+            <button class="submit-btn" onclick="alert('✅ Message sent! Our team will contact you within 24 hours. Thank you!')">Send Message 🚀</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <div class="logo" style="margin-bottom:14px">
+                <div class="logo-icon">💼</div>
+                <div class="logo-text" style="color:white">Saif<span style="color:var(--accent)">Corp</span></div>
+            </div>
+            <p class="footer-brand p" style="font-size:14px;color:#374151;line-height:1.8">Saudi Arabia's most trusted business solutions provider. Transforming companies since 2012.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#">Business Strategy</a>
+            <a href="#">Digital Transformation</a>
+            <a href="#">Marketing & Growth</a>
+            <a href="#">Data Analytics</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Our Team</a>
+            <a href="#">Case Studies</a>
+            <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="#">📍 Riyadh, Saudi Arabia</a>
+            <a href="#">📞 +966 000 000 000</a>
+            <a href="#">📧 hello@saifcorp.com</a>
+            <a href="#">⏰ Sun-Thu 8AM-6PM</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 <span>SaifCorp</span>. All Rights Reserved. ISO Certified 🏆</p>
+        <p>Built by <span>Saif Islam</span></p>
+    </div>
+</footer>
+<!-- তোমার সব সেকশন / HTML কোড এখানে থাকবে -->
+
+    <!-- জাভাস্ক্রিপ্ট বসাবে ঠিক এই জায়গায় (</body> ট্যাগের উপরে) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observerOptions = {
+                root: null,
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 150);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>
